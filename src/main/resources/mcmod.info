@@ -1,0 +1,16 @@
+[
+{
+  "modid": "^moreInformation",
+  "name": "More Inforamtion",
+  "description": "adds free cam",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["HelloHello", "Martin"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
