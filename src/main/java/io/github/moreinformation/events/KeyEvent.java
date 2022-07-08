@@ -1,7 +1,7 @@
-package io.github.moreInformation.events;
+package io.github.moreinformation.events;
 
-import io.github.moreInformation.Key;
-import io.github.moreInformation.Main;
+import io.github.moreinformation.Key;
+import io.github.moreinformation.Main;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,17 +29,10 @@ public class KeyEvent extends Event {
 
     @SubscribeEvent
     public static void onKeyPress(InputEvent.KeyInputEvent e) {
-        Key.getKeys(e.getKey(), e.getModifiers())
-                .forEach(key -> {
-                    key.setActive(e.getAction() == GLFW.GLFW_PRESS);
-                    MinecraftForge.EVENT_BUS.post(new KeyEvent(key, e.getAction()));
-                });
-    }
-
-    @SubscribeEvent
-    public static void onKeyPress(KeyEvent e) {
-        if (e.getKey() != Key.FREE_CAM)
-            return;
-        System.out.println("pressed key");
+        boolean pressed = e.getAction() == GLFW.GLFW_PRESS;
+        Key.getKeys(pressed).forEach(key -> {
+            key.setPressed(pressed);
+            MinecraftForge.EVENT_BUS.post(new KeyEvent(key, e.getAction()));
+        });
     }
 }
